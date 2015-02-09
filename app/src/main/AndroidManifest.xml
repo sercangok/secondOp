@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.salyangoz.org.secondop">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <permission
+        android:name="ccom.salyangoz.org.secondop.permission.C2D_MESSAGE"
+        android:protectionLevel="dangerous" />
+
+    <uses-permission android:name="com.salyangoz.org.secondop.permission.C2D_MESSAGE" />
+
+    <application
+        android:name=".activity.GlobalState"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/customAppTheme">
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/title_activity_main">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.facebook.LoginActivity"
+            android:label="title" />
+        <activity
+            android:name=".activity.LoginActivity"
+            android:label="Log-in" />
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        <meta-data
+            android:name="com.crashlytics.ApiKey"
+            android:value="e94b9244b6f40d86cc910a07cbcea6155d983241" />
+
+        <activity
+            android:name=".activity.GoogleActivity"
+            android:label="@string/title_activity_google"
+            android:theme="@style/Theme.Transparent" />
+
+        <service android:name=".service.GcmIntentService" />
+
+        <receiver
+            android:name=".service.receiver.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="com.salyangoz.org.secondop" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name=".activity.ContainerActivity"
+            android:label="@string/title_activity_container"
+            android:uiOptions="splitActionBarWhenNarrow" />
+    </application>
+
+</manifest>
